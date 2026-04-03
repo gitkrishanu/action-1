@@ -16,4 +16,4 @@ jobs:
           run: ls 
 
         - name: read files.
-          run: cat /workspaces/action-1/README.md
+          run: cat README.md
