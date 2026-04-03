@@ -12,15 +12,21 @@ jobs:
         - name: create dragon ascii art
           run: cowsay -f dragon "ASCIIDOC file generated" > dragon.txt
 
-        - name: sleep for 10 seconds    
-          run: sleep 10
-   
+        - name: Upload dragon ascii file
+          uses: actions/upload-artifact@v4
+          with:
+            name: dragon-file
+            path: dragon.txt
+
     test_job_1:
         needs: build_job_1
         runs-on: ubuntu-latest       
         steps:
-        - name: sleep for 10 seconds
-          run: sleep 10
+        - name: Download dragon ascii file
+          uses: actions/download-artifact@v4
+          with:
+            name: dragon-file
+            
 
         - name: test file exist
           run: grep -i "dragon" dragon.txt
@@ -30,8 +36,11 @@ jobs:
         needs: test_job_1
         runs-on: ubuntu-latest       
         steps:
-        - name: sleep for 10 seconds
-          run: sleep 10
+        - name: Download dragon ascii file
+          uses: actions/download-artifact@v4
+          with:
+            name: dragon-file
+            
 
         - name: read file 
           run: cat dragon.txt
