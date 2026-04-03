@@ -10,7 +10,7 @@ jobs:
           run: sudo apt-get install -y cowsay
 
         - name: create dragon ascii art
-          run: cowsay -f dragon "ASCIIDOC file generated" > dragon.txt
+          run: cowsay -f dragon "dragon ASCIIDOC file generated" > dragon.txt
 
         - name: Upload dragon ascii file
           uses: actions/upload-artifact@v4
