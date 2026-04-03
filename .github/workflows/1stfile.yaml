@@ -4,13 +4,16 @@ on: push
 
 jobs:
     first_job:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest       
         steps:
-            - name: welcome message
-              run: echo "my first github action job"
+        - name: checkout repo
+          uses: actions/checkout@v3
 
-            - name: list files
-              run: ls 
+        - name: welcome message
+          run: echo "my first github action job"
 
-            - name: read files.
-              run: cat /workspaces/action-1/README.md
+        - name: list files
+          run: ls 
+
+        - name: read files.
+          run: cat /workspaces/action-1/README.md
