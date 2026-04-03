@@ -13,7 +13,9 @@ jobs:
           run: ls -lart 
             
         - name: executing shell command
-          run:  ./ascii.sh 
+          run: |
+            chmod +x ascii-script.sh 
+            ./ascii-script.sh
 
           
         
