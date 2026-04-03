@@ -1,0 +1,38 @@
+name: generate ascii artwork
+
+on: push
+
+jobs:
+    build_job:
+        runs-on: ubuntu-latest       
+        steps:
+        - name: install cowsay
+          run: sudo apt-get install -y cowsay
+
+        - name: create dragon ascii art
+          run: cowsay -f dragon "ASCIIDOC file generated" > dragon.txt
+
+        - name: sleep for 10 seconds    
+          run: sleep 10
+   
+    test_job:
+        runs-on: ubuntu-latest       
+        steps:
+        - name: sleep for 10 seconds
+          run: sleep 10
+
+        - name: test file exist
+          run: grep -i "dragon" dragon.txt
+
+
+    deploy_job:
+        runs-on: ubuntu-latest       
+        steps:
+        - name: sleep for 10 seconds
+          run: sleep 10
+
+        - name: read file 
+          run: cat dragon.txt
+          
+        - name: deploy file
+          run: echo "Deploying ASCII art..."    
