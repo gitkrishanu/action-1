@@ -8,27 +8,14 @@ jobs:
         steps:
         - name: checkout repo
           uses: actions/checkout@v6
-            
-        - name: install cowsay
-          run: sudo apt-get install -y cowsay
-
-        - name: generate ASCIIDOC file
-          run: cowsay -f dragon "ASCIIDOC file generated" > dragon.txt
-
-        - name: test file exist
-          run: |
-                if [ -f "dragon.txt" ]; then
-                echo "File exists: dragon.txt"
-                else
-                echo "File does not exist: dragon.txt"
-                exit 1
-                fi  
-
-        - name: read fie
-          run: cat dragon.txt   
 
         - name: check repo file
-          run: ls -lart   
+          run: ls -lart 
+            
+        - name: executing shell command
+          run:  ./ascii.sh 
+
+          
         
           
 
